@@ -18,7 +18,7 @@ export function Hero() {
           playsInline
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.72))]" />
+        {/* <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.72))]" /> */}
       </div>
 
       <div className="relative grid mx-auto max-w-4xl gap-8 px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16 text-center">
