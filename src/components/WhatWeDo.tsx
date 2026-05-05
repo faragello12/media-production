@@ -20,8 +20,8 @@ const items = [
 
 function IconBox({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="grid size-12 place-items-center overflow-hidden rounded-xl border border-white/10 bg-white/5">
-      <img src={src} alt={alt} className="h-8 w-auto opacity-90" loading="lazy" />
+    <div className="grid h-12 w-20 place-items-center overflow-hidden rounded-xl border border-white/10 bg-white/5">
+      <img src={src} alt={alt} className="h-8 w-8 object-contain opacity-90" loading="lazy" />
     </div>
   );
 }
