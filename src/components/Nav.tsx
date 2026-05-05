@@ -8,8 +8,8 @@ export function Nav() {
     <header className="sticky top-0 z-50 border-b border-white/5 bg-mp-bg/65 backdrop-blur">
       <div className="mx-auto flex max-w-[1700px] items-center justify-between px-4 sm:px-8 lg:px-10 xl:px-4">
         <div className="flex items-center gap-3">
-          <div className="h-20 w-50 overflow-hidden">
-            <img src={ASSETS.logo} alt="" className="h-10 w-full object-cover my-6" />
+          <div className="h-20 w-30 overflow-hidden">
+            <img src={ASSETS.logo} alt="" className="h-10 w-50 object-cover my-6" />
           </div>
         </div>
 

@@ -45,7 +45,7 @@ export function ContactCta() {
               </div>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <button className="rounded-lg bg-mp-accent px-6 py-2.5 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2">
+                <button className="rounded-lg bg-mp-accent px-6 py-2.5 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent">
                   Send
                 </button>
                 <div className="text-xs text-mp-faint">
