@@ -49,7 +49,7 @@ export function ServicesRow() {
 
       <div className="mt-7 flex justify-center">
         <a
-          className="rounded-lg bg-mp-accent px-6 py-2.5 text-xl font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent"
+          className="rounded-lg bg-mp-accent px-6 py-2.5 text-lg font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent"
           href="#work"
           data-animate="fade-up"
         >
