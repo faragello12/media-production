@@ -7,7 +7,7 @@ export function TalentSection() {
         <div className="grid gap-0 lg:grid-cols-2">
           <div className="order-2 p-7 sm:p-10 lg:order-1">
             <div className="font-display text-4xl sm:text-5xl lg:text-6xl text-white/90">
-              Talent isn&apos;t enough
+              Talent isn&apos;t <span className="text-mp-accent">enough</span>
             </div>
             <p className="mt-4 text-base leading-8 text-mp-muted">
               Your Music Deserves Production That Matches Its Potential.

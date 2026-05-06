@@ -30,8 +30,8 @@ export function WhatWeDo() {
   return (
     <section className="mt-12">
       <div className="mp-card p-6 sm:p-8 lg:p-10" data-animate="fade-up" data-animate-group>
-        <div className="text-center font-display text-3xl sm:text-4xl text-white/90">
-          What We Do
+        <div className="text-center font-display text-4xl sm:text-5xl lg:text-6xl text-white/90">
+          What We <span className="text-mp-accent">Do</span>
         </div>
         <div className="mx-auto mt-3 h-px w-64 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 

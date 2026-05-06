@@ -17,9 +17,9 @@ export function MoreThanStudio() {
           <div className="relative p-7 sm:p-10 lg:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(178,63,34,0.16),transparent_54%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.05),transparent_55%)]" />
             <div className="relative">
-              <div className="text-xs sm:text-sm text-mp-faint">More than a studio</div>
-              <h3 className="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl text-white/90">
-                We’re your visual
+              <div className="text-xs sm:text-sm lg:text-lg  text-mp-faint">More than a studio</div>
+              <h3 className="mt-2 font-display text-4xl sm:text-5xl lg:text-6xl text-white/90">
+                We’re your <span className="text-mp-accent">visual</span>
                 <br />
                 strategy partner
               </h3>
