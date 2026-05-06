@@ -8,7 +8,7 @@ function AccentRule() {
 
 export function Hero() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] shadow-soft h-[60vh] min-h-[500px]">
+    <section className="relative flex items-center justify-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] shadow-soft h-[80vh] min-h-[500px]">
       <div className="absolute inset-0">
         <video
           src={ASSETS.heroVideoBg}
