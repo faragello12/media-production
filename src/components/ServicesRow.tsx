@@ -57,7 +57,7 @@ export function ServicesRow() {
         <div className="mt-10 flex justify-center" data-animate="fade-up">
           <a
             className="rounded-lg bg-mp-accent px-6 py-2.5 text-lg font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent"
-            href="#work"
+            href="about"
           >
             About Us
           </a>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ASSETS } from "../assetsManifest";
 
 const items = [
@@ -5,16 +6,19 @@ const items = [
     title: "Music Production",
     body: "Recording, mixing, and mastering.",
     icon: ASSETS.musicProductionIcon,
+    link: "/music",
   },
   {
     title: "Digital Cinema",
     body: "Commercials, documentaries, and promos.",
     icon: ASSETS.digitalCinemaIcon,
+    link: "/film",
   },
   {
     title: "Digital Content",
     body: "Social-first, cinematic campaigns.",
     icon: ASSETS.digitalContentIcons,
+    link: "/digital",
   },
 ];
 
@@ -35,11 +39,12 @@ export function WhatWeDo() {
         </div>
         <div className="mx-auto mt-3 h-px w-64 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <div className="mt-7 grid gap-6 sm:grid-cols-3">
+        <div className="mt-7 grid gap-6 sm:grid-cols-3" >
           {items.map((i) => (
-            <div
+            <Link
               key={i.title}
-              className="mp-hover rounded-2xl border border-white/10 bg-white/[0.035] p-6"
+              to={i.link}
+              className="mp-hover rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition hover:bg-white/[0.05]"
               data-hover="tilt"
               data-animate-item
             >
@@ -54,11 +59,13 @@ export function WhatWeDo() {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 flex items-center justify-between text-xs text-mp-faint">
+              <div className="mt-20 flex items-center justify-between text-xs text-mp-faint">
                 <span>Concept → Delivery</span>
-                <span className="text-mp-accent2">Explore</span>
+                <button className="inline-flex rounded-lg bg-mp-accent px-3 py-1 text-lg font-medium text-white transition hover:bg-mp-accent2 hover:text-mp-accent">
+                  Explore
+                </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -17,24 +17,61 @@ export function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <a className="hover:text-white" href="#services">
-            Services
+          <a className="hover:text-white" href="about">
+            About Us
           </a>
-          <a className="hover:text-white" href="#work">
-            Work
+          <a className="hover:text-white" href="film">
+            Film
           </a>
-          <a className="hover:text-white" href="#contact">
+          <a className="hover:text-white" href="digital">
+            Digital
+          </a>
+          <a className="hover:text-white" href="music">
+            Music
+          </a>
+          <a className="hover:text-white" href="contact">
             Contact
           </a>
         </div>
 
         <div className="flex items-center gap-4">
-          <img
-            src={ASSETS.socialIcons}
-            alt="Social links"
-            className="h-5 w-auto opacity-70"
-            loading="lazy"
-          />
+          <div className="flex gap-4">
+            <a
+              href="https://www.instagram.com/limitedmediachannel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-mp-accent transition"
+            >
+              Instagram
+            </a>
+            <span className="text-white/70">•</span>
+            <a
+              href="https://www.youtube.com/@limitedmediachannel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-mp-accent transition"
+            >
+              YouTube
+            </a>
+            <span className="text-white/70">•</span>
+            <a
+              href="https://www.tiktok.com/@limitedmediachannel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-mp-accent transition"
+            >
+              TikTok
+            </a>
+            <span className="text-white/70">•</span>
+            <a
+              href="https://www.linkedin.com/company/limited-media-production-company"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-mp-accent transition"
+            >
+              LinkedIn
+            </a>
+          </div>
           <div className="text-xs text-mp-faint">© {new Date().getFullYear()}</div>
         </div>
       </div>

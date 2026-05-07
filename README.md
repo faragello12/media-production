@@ -10,4 +10,3 @@ cd media-production
 npm install
 npm run dev
 ```
-

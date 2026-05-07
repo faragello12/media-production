@@ -4,7 +4,6 @@ import { BeenThere } from "../components/BeenThere";
 import { MoreThanStudio } from "../components/MoreThanStudio";
 import { TalentSection } from "../components/TalentSection";
 import { WhatWeDo } from "../components/WhatWeDo";
-import { ContactCta } from "../components/ContactCta";
 
 export function HomePage() {
   return (
@@ -15,7 +14,6 @@ export function HomePage() {
       <BeenThere />
       <MoreThanStudio />
       <WhatWeDo />
-      <ContactCta />
     </>
   );
 }

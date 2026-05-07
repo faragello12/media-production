@@ -1,83 +1,214 @@
 import { Link } from "react-router-dom";
-import { SectionHeading } from "../components/SectionHeading";
+import heroImage from "../assets/digital assets/hero.png";
+import modernContentImage from "../assets/digital assets/modern content section.png";
+import program1 from "../assets/digital assets/program 1.png";
+import program2 from "../assets/digital assets/program 2.png";
+import program3 from "../assets/digital assets/program 3.png";
+import { useState } from "react";
 
-const serveCards = [
-  { title: "Creators", description: "Social-first storytelling and content strategy." },
-  { title: "Brands", description: "Campaigns designed to feel premium across channels." },
-  { title: "Artists", description: "Visual identity and content for every release." },
+const contentTypes = [
+  {
+    title: "Public Figures",
+    description: "Talk shows, podcasts, video series & personal branding",
+    accent: true,
+  },
+  {
+    title: "Brands",
+    description: "High-quality, cinematic digital ads",
+    accent: true,
+  },
+  {
+    title: "Corporates",
+    description: "Media coverage, event documentation, and strategic collaboration",
+    accent: true,
+  },
+  {
+    title: "Our Originals",
+    description: "In-house programs developed & produced by Limited",
+    accent: true,
+  },
 ];
 
 const originals = [
-  { title: "Series & Episodes", description: "Multi-part runs built for brand and fan engagement." },
-  { title: "Launch Campaigns", description: "High-impact content with a cinematic edge." },
-  { title: "Visual Stories", description: "Original films made for social and streaming audiences." },
+  { image: program1, name: "Program 1" },
+  { image: program2, name: "Program 2" },
+  { image: program3, name: "Program 3" },
 ];
 
 export function DigitalContentPage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % originals.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + originals.length) % originals.length);
+  };
+
   return (
-    <div className="grid gap-14 pb-16 pt-10 lg:pb-20">
+    <div className="grid gap-14 pb-16 lg:pb-20">
+      {/* Hero Section */}
       <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] shadow-soft">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(178,63,34,0.14),transparent_48%),radial-gradient(circle_at_75%_75%,rgba(255,255,255,0.05),transparent_50%)]" />
-        <div className="relative mx-auto max-w-5xl px-6 py-16 text-center sm:px-10 sm:py-20 lg:px-14">
-          <div className="text-xs uppercase tracking-[0.3em] text-mp-faint">Digital Content</div>
-          <h1 className="mt-6 font-display text-4xl leading-tight tracking-[-0.02em] text-white sm:text-5xl lg:text-6xl">
-            Content production for the modern feed and premium launch.
-          </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-mp-muted sm:text-lg">
-            Cinematic digital content that supports strategy, builds momentum, and looks refined on every screen.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <a className="rounded-lg bg-mp-accent px-8 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" href="/contact">
-              Create Content
-            </a>
+        <img
+          src={heroImage}
+          alt="Digital Content Production"
+          className="h-[500px] w-full object-cover "
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70" />
+        <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+          <div>
+            <h1 className="mt-5 font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
+              DIGITAL CONTENT
+              <br />
+              PRODUCTION
+            </h1>
           </div>
         </div>
       </section>
 
-      <section className="mp-card p-8 sm:p-10 lg:p-12" data-animate="fade-up">
-        <SectionHeading
-          eyebrow="Modern positioning"
-          title="Not just posts—visual campaigns that feel premium."
-          description="We help content perform with cinematic execution, intentional pacing, and a clear distribution-ready package."
-        />
+      {/* Modern Content Section */}
+      <section className="mp-card grid gap-0 overflow-hidden rounded-[28px] border border-white/10 bg-black/20 shadow-soft lg:grid-cols-[1fr_1fr]" data-animate="fade-up">
+        <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+          <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl">
+            Modern <span className="text-mp-accent">Content</span>
+            <br />
+            Cinematic <span className="text-mp-accent">Execution</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-mp-muted">
+            We create original digital programs and help leading figures & brands build content that speaks with clarity, style, and intent.
+          </p>
+        </div>
+        <div className="relative overflow-hidden">
+          <img
+            src={modernContentImage}
+            alt="Modern Content"
+            className="h-full min-h-96 w-full object-cover"
+            loading="lazy"
+          />
+        </div>
       </section>
 
-      <section className="grid gap-6 sm:grid-cols-3" data-animate="fade-up">
-        {serveCards.map((item) => (
-          <div key={item.title} className="mp-card rounded-[28px] border border-white/10 bg-black/20 p-6 mp-hover" data-hover="tilt">
-            <div className="font-display text-2xl text-white">{item.title}</div>
-            <p className="mt-4 text-base leading-7 text-mp-muted">{item.description}</p>
-          </div>
-        ))}
-      </section>
-
+      {/* Content That Moves People Section */}
       <section className="mp-card p-8 sm:p-10 lg:p-12" data-animate="fade-up">
-        <SectionHeading
-          eyebrow="Originals showcase"
-          title="Custom content that feels like a brand-owned production."
-          description="We build original films, campaign suites, and series concepts with production value that stands out."
-        />
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
-          {originals.map((item) => (
-            <div key={item.title} className="rounded-[28px] border border-white/10 bg-black/20 p-6 shadow-card mp-hover" data-hover="tilt">
-              <div className="font-display text-2xl text-white">{item.title}</div>
-              <p className="mt-4 text-base leading-7 text-mp-muted">{item.description}</p>
+        <div className="text-center mb-12">
+          <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl">
+            Content That <span className="text-mp-accent">Moves</span>
+            <br />
+            People and Brands <span className="text-mp-accent">Forward</span>
+          </h2>
+          <p className="mt-6 text-base leading-8 text-mp-muted">
+            Our work blends creativity with production discipline.
+            <br />
+            We support:
+          </p>
+        </div>
+
+        {/* 4 Content Types Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {contentTypes.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-[28px] border border-white/10 bg-black/20 p-6 sm:p-8 text-center mp-hover"
+              data-hover="tilt"
+            >
+              <h3 className="font-display text-2xl text-mp-accent">{item.title}</h3>
+              <p className="mt-3 text-base leading-7 text-mp-muted">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="mp-card rounded-[28px] p-8 sm:p-10 lg:p-12" data-animate="fade-up">
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] items-center">
-          <div>
-            <div className="font-display text-4xl text-white">Original content, delivered with precision.</div>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-mp-muted">
-              Every package is built for the platform, the audience, and the look you want to own.
-            </p>
+      {/* We Don't Just Produce Section */}
+      <section className="mp-card p-8 sm:p-10 lg:p-12" data-animate="fade-up">
+        <div className="text-center mb-12">
+          <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl">
+            We Don't Just Produce for <span className="text-mp-accent">Others</span>
+            <br />
+            We Create Our <span className="text-mp-accent">Own</span>
+          </h2>
+          <p className="mt-6 max-w-3xl mx-auto text-base leading-8 text-mp-muted">
+            We develop original digital programs that are available for commercial partnership. These originals reflect our creative vision and showcase the standard we apply to client work.
+          </p>
+        </div>
+
+        {/* Originals Carousel */}
+        <div className="relative flex items-center justify-center gap-6">
+          {/* Previous Button */}
+          <button
+            onClick={goToPrev}
+            className="absolute left-0 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-mp-accent transition hover:border-mp-accent hover:bg-mp-accent/10"
+          >
+            ←
+          </button>
+
+          {/* Carousel Items */}
+          <div className="flex justify-center w-full px-16">
+            <div className="w-full max-w-md">
+              <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5">
+                <img
+                  src={originals[currentIndex].image}
+                  alt={originals[currentIndex].name}
+                  className="h-72 w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex justify-center">
-            <Link className="rounded-lg bg-mp-accent px-8 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" to="/contact">
-              Start Digital
+
+          {/* Next Button */}
+          <button
+            onClick={goToNext}
+            className="absolute right-0 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-mp-accent transition hover:border-mp-accent hover:bg-mp-accent/10"
+          >
+            →
+          </button>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="mt-8 flex justify-center gap-2">
+          {originals.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-2 w-2 rounded-full transition ${
+                index === currentIndex ? "bg-mp-accent" : "bg-white/20"
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Made to Fit Section */}
+      <section className="mp-card p-8 sm:p-10 lg:p-12 border border-white/10 bg-black/20 rounded-[28px]" data-animate="fade-up">
+        <div className="text-center">
+          <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl">
+            Made to Fit Your Format,
+            <br />
+            <span className="text-mp-accent">Platform & Audience</span>
+          </h2>
+          <p className="mt-6 max-w-3xl mx-auto text-base leading-8 text-mp-muted">
+            We approach each project with clarity, aligning the production with your tone, goals, and audience. Our team handles everything from idea shaping to final delivery, or join your creative direction where needed.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="mp-card rounded-[28px] p-8 sm:p-10 lg:p-12 border border-white/10 bg-black/20" data-animate="fade-up">
+        <div className="text-center">
+          <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl">
+            Need Content That Stands <span className="text-mp-accent">Out?</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-mp-muted">
+            Whether you're building a presence, telling a story, or launching a campaign we're here to help you do it with intention and quality.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <Link
+              className="rounded-lg bg-mp-accent px-8 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent"
+              to="/contact"
+            >
+              Let's Create Together
             </Link>
           </div>
         </div>

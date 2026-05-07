@@ -46,7 +46,7 @@ export function Hero() {
           <div className="mt-7 flex flex-wrap items-center gap-3 justify-center">
             <a
               className="rounded-lg bg-mp-accent px-6 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent text-center"
-              href="#contact"
+              href="contact"
             >
               Get Started
             </a>
