@@ -41,11 +41,14 @@ export function ContactPage() {
     setSubmitStatus(null);
 
     try {
-      // Initialize EmailJS with your service credentials
-      // You need to sign up at https://www.emailjs.com/ and get these values
-      const serviceId = 'service_vh6ihkg'; // Replace with your EmailJS service ID
-      const templateId = 'template_njxn3u1'; // Replace with your EmailJS template ID
-      const publicKey = '4sah5wvp0Nt9AbeLT'; // Replace with your EmailJS public key
+      // Initialize EmailJS with your service credentials from environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+      }
 
       const templateParams = {
         from_name: name,
