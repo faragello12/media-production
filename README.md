@@ -17,21 +17,6 @@ npm run dev
 npm run build
 ```
 
-### Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```env
-VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
-```
-
-### Security Notes
-
-- EmailJS API keys are stored in environment variables (not committed to git)
-- All dependencies are audited for security vulnerabilities
-- The application uses HTTPS in production
 
 ### Deployment
 
