@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ASSETS } from "../assetsManifest";
 
 export function Nav() {
@@ -8,28 +9,31 @@ export function Nav() {
     <header className="sticky top-0 z-50 border-b border-white/5 bg-mp-bg/65 backdrop-blur">
       <div className="mx-auto flex max-w-[1700px] items-center justify-between px-4 sm:px-8 lg:px-10 xl:px-4">
         <div className="flex items-center gap-3">
-          <div className="h-20 w-30 overflow-hidden">
-            <img src={ASSETS.logo} alt="" className="h-10 w-50 object-cover my-6" />
-          </div>
+          <Link to="/" className="h-20 w-30 overflow-hidden">
+            <img src={ASSETS.logo} alt="Limited Media Production" className="h-10 w-50 object-cover my-6" />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 text-base text-white/80 md:flex">
-          <a className="hover:text-white" href="#services">
-            Services
-          </a>
-          <a className="hover:text-white" href="#work">
-            Work
-          </a>
-          <a className="hover:text-white" href="#contact">
-            Contact
-          </a>
-          <a
-            className="rounded-lg bg-mp-accent px-4 py-2 font-medium text-white shadow-soft transition hover:bg-white hover:text-mp-accent"
-            href="#contact"
-          >
+          <Link className="hover:text-white" to="/about">
             About Us
-          </a>
+          </Link>
+          <Link className="hover:text-white" to="/film">
+            Film
+          </Link>
+          <Link className="hover:text-white" to="/digital">
+            Digital
+          </Link>
+          <Link className="hover:text-white" to="/music">
+            Music
+          </Link>
+          <Link
+            className="rounded-lg bg-mp-accent px-4 py-2 font-medium text-white shadow-soft transition hover:bg-white hover:text-mp-accent"
+            to="/contact"
+          >
+            Contact
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -68,34 +72,41 @@ export function Nav() {
         <div className="md:hidden">
           <div className="border-t border-white/5 bg-mp-bg/95 backdrop-blur px-4 py-6">
             <nav className="flex flex-col gap-4 text-sm text-white/80">
-              <a
+              <Link
                 className="hover:text-white transition-colors"
-                href="#services"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Services
-              </a>
-              <a
-                className="hover:text-white transition-colors"
-                href="#work"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Work
-              </a>
-              <a
-                className="hover:text-white transition-colors"
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </a>
-              <a
-                className="rounded-lg bg-mp-accent px-4 py-2 font-medium text-white shadow-soft transition hover:bg-white hover:text-mp-accent text-center"
-                href="#contact"
+                to="/about"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
-              </a>
+              </Link>
+              <Link
+                className="hover:text-white transition-colors"
+                to="/film"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Film
+              </Link>
+              <Link
+                className="hover:text-white transition-colors"
+                to="/digital"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Digital
+              </Link>
+              <Link
+                className="hover:text-white transition-colors"
+                to="/music"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Music
+              </Link>
+              <Link
+                className="rounded-lg bg-mp-accent px-4 py-2 font-medium text-white shadow-soft transition hover:bg-white hover:text-mp-accent text-center"
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
             </nav>
           </div>
         </div>

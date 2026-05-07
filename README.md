@@ -1,6 +1,6 @@
 ## Media Production (Figma → React + Tailwind + GSAP)
 
-This is a React + Tailwind landing page implementation based on the Figma file:
+This is a React + Tailwind implementation based on the Figma file:
 `Media-Production`.
 
 ### Run locally

@@ -1,16 +1,15 @@
 import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Nav } from "./components/Nav";
-import { Hero } from "./components/Hero";
-import { ServicesRow } from "./components/ServicesRow";
-import { BeenThere } from "./components/BeenThere";
-import { MoreThanStudio } from "./components/MoreThanStudio";
-import { TalentSection } from "./components/TalentSection";
-import { WhatWeDo } from "./components/WhatWeDo";
-import { ContactCta } from "./components/ContactCta";
 import { Footer } from "./components/Footer";
-import { ASSETS } from "./assetsManifest";
+import { HomePage } from "./pages/HomePage";
+import { AboutUsPage } from "./pages/AboutUsPage";
+import { FilmProductionPage } from "./pages/FilmProductionPage";
+import { DigitalContentPage } from "./pages/DigitalContentPage";
+import { MusicProductionPage } from "./pages/MusicProductionPage";
+import { ContactPage } from "./pages/ContactPage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +21,14 @@ export default function App() {
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches,
     [],
   );
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (prefersReducedMotion) return;
@@ -116,31 +123,23 @@ export default function App() {
     <div
       ref={rootRef}
       className="min-h-dvh text-mp-ink selection:bg-mp-accent/40 selection:text-white"
-      // style={{
-      //   backgroundImage: `url(${ASSETS.background2})`,
-      //   backgroundSize: "100% 100%",
-      //   backgroundRepeat: "no-repeat",
-      //   backgroundPosition: "center center",
-      //   backgroundAttachment: "fixed",
-      // }}
     >
-       <div
+      <div
         className="pointer-events-none fixed inset-0 -z-20 opacity-95"
-        
-         style={{ background: "radial-gradient(circle at 20% 20%, #b23f221a, transparent 54%), radial-gradient(circle at 70% 70%, #ffffff0d, transparent 55%)" }}
+        style={{ background: "radial-gradient(circle at 20% 20%, #b23f221a, transparent 54%), radial-gradient(circle at 70% 70%, #ffffff0d, transparent 55%)" }}
       />
       <div className="pointer-events-none fixed inset-0 -z-10 mp-noise opacity-70" />
-     
 
       <Nav />
       <main className="mx-auto w-full max-w-[1700px] px-5 pb-20 pt-10 sm:px-8 lg:px-10 xl:px-4">
-        <Hero />
-        <TalentSection />
-        <ServicesRow />
-        <BeenThere />
-        <MoreThanStudio />
-        <WhatWeDo />
-        <ContactCta />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/film" element={<FilmProductionPage />} />
+          <Route path="/digital" element={<DigitalContentPage />} />
+          <Route path="/music" element={<MusicProductionPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </main>
       <Footer />
     </div>
