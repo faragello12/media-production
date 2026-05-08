@@ -32,7 +32,7 @@ function IconBox({ src, alt }: { src: string; alt: string }) {
 
 export function WhatWeDo() {
   return (
-    <section className="mt-12">
+    <section className="mt-12" id="what-we-do">
       <div className="mp-card p-6 sm:p-8 lg:p-10" data-animate="fade-up" data-animate-group>
         <div className="text-center font-display text-4xl sm:text-5xl lg:text-6xl text-white/90">
           What We <span className="text-mp-accent">Do</span>

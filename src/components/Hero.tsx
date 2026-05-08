@@ -48,12 +48,12 @@ export function Hero() {
            <Link className="inline-flex rounded-lg bg-mp-accent px-8 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" to="/contact">
               Get Started
             </Link>
-            <Link
+            <a
               className="rounded-lg border border-white/12 bg-white/5 px-6 py-3 text-base font-medium text-white/85 transition hover:bg-white/10 text-center"
-              to="/about"
+              href="#what-we-do"
             >
               View Services
-            </Link>
+            </a>
           </div>
         </div>
       </div>
