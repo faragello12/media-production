@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ASSETS } from "../assetsManifest";
 
 function AccentRule() {
@@ -44,18 +45,15 @@ export function Hero() {
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3 justify-center">
-            <a
-              className="rounded-lg bg-mp-accent px-6 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent text-center"
-              href="contact"
-            >
+           <Link className="inline-flex rounded-lg bg-mp-accent px-8 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" to="/contact">
               Get Started
-            </a>
-            <a
+            </Link>
+            <Link
               className="rounded-lg border border-white/12 bg-white/5 px-6 py-3 text-base font-medium text-white/85 transition hover:bg-white/10 text-center"
-              href="#services"
+              to="/about"
             >
               View Services
-            </a>
+            </Link>
           </div>
         </div>
       </div>

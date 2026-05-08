@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ASSETS } from "../assetsManifest";
 
 const services = [
@@ -55,12 +56,9 @@ export function ServicesRow() {
         </div>
 
         <div className="mt-10 flex justify-center" data-animate="fade-up">
-          <a
-            className="rounded-lg bg-mp-accent px-6 py-2.5 text-lg font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent"
-            href="about"
-          >
+          <Link className="inline-flex rounded-lg bg-mp-accent px-8 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" to="/about">
             About Us
-          </a>
+          </Link>
         </div>
       </div>
     </section>
