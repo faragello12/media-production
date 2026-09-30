@@ -42,9 +42,13 @@ The site is pre-built. No Node/npm is needed on the server — everything to upl
 
 ```bash
 npm install
-cp .env.example .env   # وحط مفاتيح EmailJS الحقيقية
 npm run build          # يطلع فولدر dist/ جديد
 ```
 
-مفاتيح EmailJS بتتحط جوه الـ build وقت البناء، فلازم ملف `.env` يكون موجود قبل `npm run build`، وإلا فورم التواصل مش هيبعت.
-EmailJS keys are baked in at build time — `.env` must exist before `npm run build` or the contact form will fail.
+مفاتيح EmailJS موجودة في `.env.production` وبتتحط جوه الـ build تلقائياً (المفاتيح دي عامة أصلاً وبتوصل لمتصفح كل زائر).
+EmailJS keys live in `.env.production` and are baked in at build time (they are public browser keys by design).
+
+## Vercel
+
+المشروع شغال على Vercel كمان من غير أي إعدادات: Vercel بيعمل `npm run build` لوحده، وملف `vercel.json` بيخلي لينكات زي `/about` تفتح مع الـ reload.
+Works on Vercel with zero config: it runs `npm run build`, and `vercel.json` rewrites all routes to `index.html` so reloads on `/about` etc. don't 404.

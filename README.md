@@ -15,7 +15,7 @@ React + Vite + Tailwind + GSAP.
 
 ```bash
 npm install
-cp .env.example .env   # add EmailJS keys
+cp .env.production .env   # dev mode only reads .env (needed for the contact form)
 npm run dev
 ```
 
