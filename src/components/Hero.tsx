@@ -13,6 +13,7 @@ export function Hero() {
       <div className="absolute inset-0">
         <video
           src={ASSETS.heroVideoBg}
+          poster={ASSETS.heroVideoPoster}
           autoPlay
           muted
           loop

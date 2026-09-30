@@ -10,8 +10,19 @@ import { FilmProductionPage } from "./pages/FilmProductionPage";
 import { DigitalContentPage } from "./pages/DigitalContentPage";
 import { MusicProductionPage } from "./pages/MusicProductionPage";
 import { ContactPage } from "./pages/ContactPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SITE_NAME = "Limited Media Production";
+const PAGE_TITLES: Record<string, string> = {
+  "/": `${SITE_NAME} - Professional Media Services`,
+  "/about": `About Us | ${SITE_NAME}`,
+  "/film": `Film Production | ${SITE_NAME}`,
+  "/digital": `Digital Content | ${SITE_NAME}`,
+  "/music": `Music Production | ${SITE_NAME}`,
+  "/contact": `Contact Us | ${SITE_NAME}`,
+};
 
 export default function App() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -28,6 +39,7 @@ export default function App() {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0);
     }
+    document.title = PAGE_TITLES[location.pathname] ?? `Page Not Found | ${SITE_NAME}`;
   }, [location.pathname]);
 
   useEffect(() => {
@@ -139,6 +151,7 @@ export default function App() {
           <Route path="/digital" element={<DigitalContentPage />} />
           <Route path="/music" element={<MusicProductionPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

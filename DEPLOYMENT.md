@@ -1,160 +1,50 @@
-# 🚀 دليل النشر - Deployment Guide
+# رفع الموقع على cPanel — Deployment Guide
 
-## الملفات الموجودة على GitHub
+**الدومين:** https://limitedmediaproduction.com
 
-جميع الملفات التالية موجودة وجاهزة للتحميل من المستودع:
-
-### 📦 **الملفات الأساسية:**
-- `package.json` - قائمة التبعيات والأوامر
-- `package-lock.json` - إصدارات التبعيات المُحددة
-- `index.html` - الصفحة الرئيسية
-
-### ⚙️ **ملفات التكوين:**
-- `vite.config.ts` - إعدادات بناء المشروع
-- `tailwind.config.ts` - إعدادات التنسيقات
-- `postcss.config.js` - معالج التنسيقات
-- `tsconfig.json` - إعدادات TypeScript
-- `.gitignore` - الملفات المحمية
-
-### 💾 **الكود المصدري:**
-- `src/` - مجلد الكود الكامل
-  - `src/pages/` - الصفحات الرئيسية
-  - `src/components/` - المكونات القابلة لإعادة الاستخدام
-  - `src/assets/` - الصور والملفات الوسائط
-
-### 📁 **الملفات المبنية (جاهزة للنشر):**
-- `dist/index.html` - الصفحة المبنية
-- `dist/assets/` - جميع الملفات المحسنة والمضغوطة
+الموقع متبني وجاهز. مش محتاج `npm` ولا Node على السيرفر — كل الملفات المطلوبة موجودة في فولدر `dist/`.
+The site is pre-built. No Node/npm is needed on the server — everything to upload is in `dist/`.
 
 ---
 
-## 🔧 خطوات النشر على السيرفر
+## الطريقة الأسهل: ملف ZIP واحد
 
-### الخطوة 1: تحميل المشروع
-```bash
-git clone https://github.com/faragello12/media-production.git
-cd media-production
-```
+1. نزّل الملف **[upload-to-cpanel.zip](upload-to-cpanel.zip)** (زرار Download على صفحة الملف في GitHub).
+2. في cPanel افتح **File Manager** → ادخل على `public_html`.
+3. من **Settings** (فوق على اليمين) فعّل **Show Hidden Files (dotfiles)**.
+4. امسح ملفات الموقع القديمة من `public_html` لو موجودة.
+5. **Upload** للملف `upload-to-cpanel.zip` جوه `public_html` → كليك يمين عليه → **Extract** → وبعدين امسح الـ zip.
+6. اتأكد إن `index.html` و `.htaccess` وفولدر `assets` موجودين **مباشرةً** جوه `public_html` (مش جوه فولدر فرعي).
 
-### الخطوة 2: إعداد متغيرات البيئة
-```bash
-# أنشئ ملف .env
-cat > .env << EOF
-VITE_EMAILJS_SERVICE_ID=service_vh6ihkg
-VITE_EMAILJS_TEMPLATE_ID=template_njxn3u1
-VITE_EMAILJS_PUBLIC_KEY=4sah5wvp0Nt9AbeLT
-EOF
-```
+## أو: رفع فولدر `dist/` يدوي
 
-### الخطوة 3: تثبيت التبعيات
+ارفع **محتويات** فولدر [`dist/`](dist) (مش الفولدر نفسه) على `public_html`، بما فيهم الملف المخفي `.htaccess`.
+
+---
+
+## ⚠️ مهم
+
+- **`.htaccess` لازم يترفع.** هو اللي بيخلي لينكات زي `/about` و `/contact` تفتح مباشرة (من غيره هتطلع 404)، وبيحوّل `http` و `www` لـ `https://limitedmediaproduction.com`.
+- **SSL لازم يكون شغال** على الدومين (cPanel → **SSL/TLS Status** → AutoSSL)، لأن الموقع بيحوّل كل الزوار لـ https.
+
+## ✅ اختبار بعد الرفع
+
+- [ ] https://limitedmediaproduction.com بيفتح وفيديو الصفحة الرئيسية شغال
+- [ ] https://limitedmediaproduction.com/contact بيفتح مباشرة (مش 404)
+- [ ] http://www.limitedmediaproduction.com بيحوّل لـ https من غير www
+- [ ] أيقونة الموقع (L) ظاهرة في التاب
+- [ ] إرسال رسالة تجربة من فورم Contact ووصولها على limitedmediaproduction@gmail.com
+- [ ] تسجيل الموقع في Google Search Console وإضافة `https://limitedmediaproduction.com/sitemap.xml`
+
+---
+
+## للمطورين فقط: إعادة البناء بعد تعديل الكود
+
 ```bash
 npm install
+cp .env.example .env   # وحط مفاتيح EmailJS الحقيقية
+npm run build          # يطلع فولدر dist/ جديد
 ```
 
-### الخطوة 4: بناء المشروع
-```bash
-npm run build
-```
-
-### الخطوة 5: نشر الملفات
-```bash
-# رفع محتويات مجلد dist/ فقط إلى المسار العام في السيرفر
-# عادةً يكون المسار: /var/www/public_html/ أو /home/username/public_html/
-
-cp -r dist/* /path/to/public_html/
-```
-
----
-
-## ⚠️ ملفات محمية (لن تجدها على GitHub)
-
-- `.env` - مفاتيح API (يجب إنشاؤها على السيرفر)
-- `node_modules/` - التبعيات (تُثبت محلياً)
-- `dist/` الملفات المبنية (تُنشأ محلياً)
-
----
-
-## 🌐 إعدادات السيرفر المهمة
-
-### 1. إعادة التوجيه (SPA Routing)
-تأكد من أن السيرفر يُعيد توجيه جميع الطلبات التي لا توجد بها ملفات إلى `index.html`:
-
-**لـ Apache (.htaccess):**
-```apache
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
-```
-
-**لـ Nginx:**
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    
-    root /path/to/dist;
-    index index.html;
-    
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-### 2. HTTPS
-تأكد من تفعيل HTTPS (استخدم Let's Encrypt مثلاً):
-```bash
-# على Ubuntu/Debian
-sudo apt-get install certbot
-sudo certbot certonly --webroot -w /path/to/dist -d your-domain.com
-```
-
-### 3. Gzip Compression
-فعّل ضغط الملفات لتحسين الأداء:
-```nginx
-gzip on;
-gzip_types text/css application/javascript image/svg+xml;
-gzip_min_length 1000;
-```
-
----
-
-## ✅ قائمة التحقق قبل النشر
-
-- [ ] تم استنساخ المشروع من GitHub
-- [ ] تم إعداد ملف `.env` مع مفاتيح EmailJS
-- [ ] تم تشغيل `npm install` و `npm run build`
-- [ ] تم رفع محتويات `dist/` إلى السيرفر
-- [ ] تم إعداد إعادة التوجيه (SPA Routing)
-- [ ] تم تفعيل HTTPS
-- [ ] تم اختبار جميع الروابط والصفحات
-
----
-
-## 🐛 استكشاف الأخطاء
-
-### المشروع لا يُحمّل
-- تحقق من أن جميع الملفات موجودة في `dist/`
-- تأكد من إعادة توجيه SPA صحيحة
-
-### رسالة خطأ في EmailJS
-- تحقق من مفاتيح API في `.env`
-- تأكد من أن البيانات صحيحة في لوحة تحكم EmailJS
-
-### مشاكل الأداء
-- فعّل Gzip Compression
-- استخدم CDN للصور الكبيرة
-- تحقق من سرعة الاتصال بالإنترنت
-
----
-
-## 📞 معلومات المساعدة
-
-- **مستودع GitHub:** https://github.com/faragello12/media-production
-- **موقع البريد الإلكتروني:** limitedmediaproduction@gmail.com
-- **الدعم الفني:** تواصل مع المطور
+مفاتيح EmailJS بتتحط جوه الـ build وقت البناء، فلازم ملف `.env` يكون موجود قبل `npm run build`، وإلا فورم التواصل مش هيبعت.
+EmailJS keys are baked in at build time — `.env` must exist before `npm run build` or the contact form will fail.

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import heroImage from "../assets/film assets/Rectangle 2.png";
-import heroImage2 from "../assets/film assets/redd-francisco-ZfDwNy84iXQ-unsplash 1.png";
-import workWithImage from "../assets/film assets/brands-people-br2HgQuvq6I-unsplash 1.png";
+import heroImage from "../assets/film assets/Rectangle 2.webp";
+import heroImage2 from "../assets/film assets/redd-francisco-ZfDwNy84iXQ-unsplash 1.webp";
+import workWithImage from "../assets/film assets/brands-people-br2HgQuvq6I-unsplash 1.webp";
 
 export function FilmProductionPage() {
   return (
@@ -12,7 +12,6 @@ export function FilmProductionPage() {
           src={heroImage}
           alt="Film Production"
           className="h-[500px] w-full object-cover"
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70" />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">

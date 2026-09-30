@@ -59,11 +59,11 @@ export function WhatWeDo() {
                   </div>
                 </div>
               </div>
-              <div className="mt-20 flex items-center justify-between text-xs text-mp-faint">
+              <div className="mt-8 flex sm:mt-20 items-center justify-between text-xs text-mp-faint">
                 <span>Concept → Delivery</span>
-                <button className="inline-flex rounded-lg bg-mp-accent px-3 py-1 text-lg font-medium text-white transition hover:bg-mp-accent2 hover:text-mp-accent">
+                <span className="inline-flex rounded-lg bg-mp-accent px-3 py-1 text-lg font-medium text-white transition hover:bg-mp-accent2 hover:text-mp-accent">
                   Explore
-                </button>
+                </span>
               </div>
             </Link>
           ))}

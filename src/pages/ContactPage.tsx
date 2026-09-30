@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import emailjs from '@emailjs/browser';
-import heroImage from "../assets/contact/Rectangle 2.png";
+import heroImage from "../assets/contact/Rectangle 2.webp";
+import { SOCIAL_LINKS } from "../socialLinks";
 
 /*
 EMAILJS SETUP INSTRUCTIONS:
@@ -20,9 +21,9 @@ EMAILJS SETUP INSTRUCTIONS:
 */
 
 const contactDetails = [
-  { label: "Email", value: "limitedmediaproduction@gmail.com" },
-  { label: "Landline", value: "+20 2 25320272" },
-  { label: "Phone / WhatsApp", value: "+20 121 118 3575" },
+  { label: "Email", value: "limitedmediaproduction@gmail.com", href: "mailto:limitedmediaproduction@gmail.com" },
+  { label: "Landline", value: "+20 2 25320272", href: "tel:+20225320272" },
+  { label: "Phone / WhatsApp", value: "+20 121 118 3575", href: "https://wa.me/201211183575" },
   { label: "Address", value: "3 Labib Al Batanony, Manyal, Cairo, Egypt" },
 ];
 
@@ -83,7 +84,6 @@ export function ContactPage() {
           src={heroImage}
           alt="Contact Us"
           className="h-[520px] w-full object-cover"
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/90" />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
@@ -177,7 +177,15 @@ export function ContactPage() {
               {contactDetails.map((item) => (
                 <div key={item.label} className="rounded-[24px] border border-white/10 bg-black/15 p-5">
                   <div className="text-sm uppercase tracking-[0.22em] text-mp-faint">{item.label}</div>
-                  <div className="mt-3 text-base text-white">{item.value}</div>
+                  <div className="mt-3 text-base text-white [overflow-wrap:anywhere]">
+                    {item.href ? (
+                      <a href={item.href} className="transition hover:text-mp-accent" {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -191,13 +199,12 @@ export function ContactPage() {
 
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/80">
               <span className="text-mp-accent">Social Media:</span>
-              <a href="https://www.instagram.com/limitedmediachannel" target="_blank" rel="noopener noreferrer" className="hover:text-mp-accent transition">Instagram</a>
-              <span>•</span>
-              <a href="https://www.youtube.com/@limitedmediachannel" target="_blank" rel="noopener noreferrer" className="hover:text-mp-accent transition">YouTube</a>
-              <span>•</span>
-              <a href="https://www.tiktok.com/@limitedmediachannel" target="_blank" rel="noopener noreferrer" className="hover:text-mp-accent transition">TikTok</a>
-              <span>•</span>
-              <a href="https://www.linkedin.com/company/limited-media-production-company" target="_blank" rel="noopener noreferrer" className="hover:text-mp-accent transition">LinkedIn</a>
+              {SOCIAL_LINKS.map((s, i) => (
+                <span key={s.href} className="flex items-center gap-3">
+                  {i > 0 && <span aria-hidden="true">•</span>}
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-mp-accent transition">{s.label}</a>
+                </span>
+              ))}
             </div>
           </div>
         </div>

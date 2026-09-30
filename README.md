@@ -1,25 +1,28 @@
-## Media Production (Figma → React + Tailwind + GSAP)
+## Limited Media Production — Website
 
-This is a React + Tailwind implementation based on the Figma file:
-`Media-Production`.
+**Live:** https://limitedmediaproduction.com
 
-### Run locally
+### 🚀 للرفع على السيرفر (cPanel)
+
+الموقع جاهز — نزّل **[upload-to-cpanel.zip](upload-to-cpanel.zip)** وفكّه جوه `public_html`.
+الخطوات بالتفصيل في **[DEPLOYMENT.md](DEPLOYMENT.md)**.
+
+---
+
+### Development
+
+React + Vite + Tailwind + GSAP.
 
 ```bash
-cd media-production
 npm install
+cp .env.example .env   # add EmailJS keys
 npm run dev
 ```
 
-### Build for production
+### Build
 
 ```bash
 npm run build
 ```
 
-
-### Deployment
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to your web server
-3. Ensure your server serves the `index.html` file for all routes (SPA routing)
+Outputs the deployable site to `dist/`. Commit the rebuilt `dist/` and regenerate `upload-to-cpanel.zip` from its contents.

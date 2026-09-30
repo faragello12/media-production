@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import heroImage from "../assets/about us assets/1.png";
-import serviceImageA from "../assets/about us assets/2.png";
-import serviceImageB from "../assets/about us assets/3.png";
-import serviceImageC from "../assets/about us assets/4.png";
-import missionImage from "../assets/about us assets/5.png";
-import missionImage2 from "../assets/about us assets/6.png";
-import missionImage3 from "../assets/about us assets/7.png";
+import heroImage from "../assets/about us assets/1.webp";
+import serviceImageA from "../assets/about us assets/2.webp";
+import serviceImageB from "../assets/about us assets/3.webp";
+import serviceImageC from "../assets/about us assets/4.webp";
+import missionImage from "../assets/about us assets/5.webp";
+import missionImage2 from "../assets/about us assets/6.webp";
 import iconArt from "../assets/about us assets/Vector.png";
 import iconClarity from "../assets/about us assets/Vector-1.png";
 import iconBold from "../assets/about us assets/Vector-2.png";
@@ -66,7 +65,6 @@ export function AboutUsPage() {
           src={heroImage}
           alt="About Limited Media Production"
           className="h-[420px] w-full object-cover"
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/25 to-black/70" />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
@@ -92,12 +90,12 @@ export function AboutUsPage() {
               At Limited Media Production, we give creatives, public figures and brands the power to turn ideas into impactful visual experiences through world-class music, film, and content production.
             </p>
             <div className="mt-8">
-              <button className="rounded-lg bg-mp-accent px-7 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" onClick={() => window.location.href = "/contact"}>
+              <Link className="inline-flex rounded-lg bg-mp-accent px-7 py-3 text-base font-medium text-white shadow-soft transition hover:bg-mp-accent2 hover:text-mp-accent" to="/contact">
                 Get in touch
-              </button>
+              </Link>
             </div>
           </div>
-          <div className="relative overflow-hidden border-l border-white/10 lg:border-l-0 lg:border-t lg:border-t-white/10">
+          <div className="relative overflow-hidden border-t border-white/10 lg:border-l lg:border-t-0">
             <img src={serviceImageA} alt="Studio setup" className="h-full w-full object-cover" loading="lazy" />
           </div>
         </div>
@@ -169,7 +167,7 @@ export function AboutUsPage() {
 
       <section className="grid gap-6 lg:grid-cols-4" data-animate="fade-up">
         {values.map((item) => (
-          <div key={item.title} className="h-50 rounded-[28px] border border-white/10 bg-black/20 p-6 text-center mp-hover" data-hover="tilt">
+          <div key={item.title} className="rounded-[28px] border border-white/10 bg-black/20 p-6 text-center mp-hover" data-hover="tilt">
             <div className="mx-auto h-12 w-12 overflow-hidden rounded-3xl bg-white/5">
               <img src={item.icon} alt="" className="h-full w-full object-contain p-3" loading="lazy" />
             </div>

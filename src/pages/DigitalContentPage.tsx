@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import heroImage from "../assets/digital assets/hero.png";
-import modernContentImage from "../assets/digital assets/modern content section.png";
-import program1 from "../assets/digital assets/program 1.png";
-import program2 from "../assets/digital assets/program 2.png";
-import program3 from "../assets/digital assets/program 3.png";
-import { useState } from "react";
+import heroImage from "../assets/digital assets/hero.webp";
+import modernContentImage from "../assets/digital assets/modern content section.webp";
+import fehaEhLogo from "../assets/digital assets/feha-eh.webp";
+import belHawaLogo from "../assets/digital assets/bel-hawa.webp";
 
 const contentTypes = [
   {
@@ -30,22 +28,11 @@ const contentTypes = [
 ];
 
 const originals = [
-  { image: program1, name: "Program 1" },
-  { image: program2, name: "Program 2" },
-  { image: program3, name: "Program 3" },
+  { image: fehaEhLogo, name: "فيها إيه؟!" },
+  { image: belHawaLogo, name: "بالهوا" },
 ];
 
 export function DigitalContentPage() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % originals.length);
-  };
-
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + originals.length) % originals.length);
-  };
-
   return (
     <div className="grid gap-14 pb-16 lg:pb-20">
       {/* Hero Section */}
@@ -54,7 +41,6 @@ export function DigitalContentPage() {
           src={heroImage}
           alt="Digital Content Production"
           className="h-[500px] w-full object-cover "
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70" />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
@@ -133,49 +119,21 @@ export function DigitalContentPage() {
           </p>
         </div>
 
-        {/* Originals Carousel */}
-        <div className="relative flex items-center justify-center gap-6">
-          {/* Previous Button */}
-          <button
-            onClick={goToPrev}
-            className="absolute left-0 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-mp-accent transition hover:border-mp-accent hover:bg-mp-accent/10"
-          >
-            ←
-          </button>
-
-          {/* Carousel Items */}
-          <div className="flex justify-center w-full px-16">
-            <div className="w-full max-w-md">
-              <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5">
-                <img
-                  src={originals[currentIndex].image}
-                  alt={originals[currentIndex].name}
-                  className="h-72 w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+        {/* Originals */}
+        <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2" data-animate-group>
+          {originals.map((item) => (
+            <div
+              key={item.name}
+              className="overflow-hidden rounded-[28px] border border-white/10 bg-white shadow-card transition duration-300 ease-out hover:-translate-y-0.5"
+              data-animate-item
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
             </div>
-          </div>
-
-          {/* Next Button */}
-          <button
-            onClick={goToNext}
-            className="absolute right-0 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-mp-accent transition hover:border-mp-accent hover:bg-mp-accent/10"
-          >
-            →
-          </button>
-        </div>
-
-        {/* Carousel Indicators */}
-        <div className="mt-8 flex justify-center gap-2">
-          {originals.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2 w-2 rounded-full transition ${
-                index === currentIndex ? "bg-mp-accent" : "bg-white/20"
-              }`}
-            />
           ))}
         </div>
       </section>

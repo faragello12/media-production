@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import heroImage from "../assets/music production/hero.png";
-import soundImage from "../assets/music production/your sound section.png";
-import talentImage from "../assets/music production/talent section.png";
-import singersImage from "../assets/music production/singers.png";
-import rappersImage from "../assets/music production/creative rappers.png";
-import newTalentsImage from "../assets/music production/new talents.png";
-import bigNamesImage from "../assets/music production/big names.png";
+import heroImage from "../assets/music production/hero.webp";
+import soundImage from "../assets/music production/your sound section.webp";
+import talentImage from "../assets/music production/talent section.webp";
+import singersImage from "../assets/music production/singers.webp";
+import rappersImage from "../assets/music production/creative rappers.webp";
+import newTalentsImage from "../assets/music production/new talents.webp";
+import bigNamesImage from "../assets/music production/big names.webp";
 
 const suiteItems = [
   {
@@ -65,7 +65,6 @@ export function MusicProductionPage() {
           src={heroImage}
           alt="Music Production"
           className="h-[500px] w-full object-cover"
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70" />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
@@ -144,7 +143,7 @@ export function MusicProductionPage() {
             </p>
           </div>
           <div className="space-y-6">
-            {talentRows.map((row, index) => (
+            {talentRows.map((row) => (
               <div key={row.label} className="grid gap-4 sm:grid-cols-[0.95fr_1.05fr] items-center rounded-[28px] border border-white/10 bg-black/15 p-5">
                 <div>
                   <div className="font-display text-xl text-mp-accent">{row.label}</div>
